@@ -127,7 +127,7 @@ from sklearn.decomposition import (
 )
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.feature_extraction.text import (
-    CountVectorizer, TfidfTransformer, TfidfVectorizer
+    CountVectorizer, HashingVectorizer, TfidfTransformer, TfidfVectorizer
 )
 from sklearn.feature_selection import (
     GenericUnivariateSelect, RFE, RFECV,
@@ -256,7 +256,7 @@ def build_sklearn_operator_name_map():
                 NeighborhoodComponentsAnalysis,
                 PCA, TruncatedSVD, IncrementalPCA,
                 Binarizer, MinMaxScaler, MaxAbsScaler, Normalizer,
-                CountVectorizer, TfidfVectorizer, TfidfTransformer,
+                CountVectorizer, HashingVectorizer, TfidfVectorizer, TfidfTransformer,
                 FunctionTransformer, KBinsDiscretizer, PolynomialFeatures,
                 Imputer, SimpleImputer, LabelBinarizer, LabelEncoder,
                 KNeighborsTransformer, KNNImputer,

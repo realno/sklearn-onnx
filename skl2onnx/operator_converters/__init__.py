@@ -23,6 +23,7 @@ from . import gaussian_process
 from . import gaussian_mixture
 from . import gradient_boosting
 from . import grid_search_cv
+from . import hashing_vectoriser
 from . import imputer_op
 from . import k_bins_discretiser
 from . import k_means
@@ -71,6 +72,7 @@ __all__ = [
     gaussian_mixture,
     gradient_boosting,
     grid_search_cv,
+    hashing_vectoriser,
     imputer_op,
     k_bins_discretiser,
     k_means,
