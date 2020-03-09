@@ -206,12 +206,14 @@ def convert_sklearn_hashing_vectorizer(scope, operator, container):
     mode = 'TF'
 
     # Create the node.
+
+    # Set default and max n_features=5000
+    if op.n_features is None or op.n_features > 5000:
+        op.n_features = 5000
+
     attrs = {'name': scope.get_unique_operator_name("HashingVectorizer")}
     attrs.update({
-        'min_gram_length': op.ngram_range[0],
-        'max_gram_length': op.ngram_range[1],
-        'mode': mode,
-        'max_skip_count': 0,
+        'n_features': op.n_features,
     })
     output = (scope.get_unique_variable_name('output')
               if op.binary else operator.output_full_names)
@@ -226,9 +228,9 @@ def convert_sklearn_hashing_vectorizer(scope, operator, container):
         container.add_node(op_type, tokenized, output_tf,
                            op_domain='com.microsoft', **attrs)
     else:
-        op_type = 'HasingVectorizer'
-        container.add_node(op_type, tokenized, output_tf, op_domain='',
-                           op_version=9, **attrs)
+        op_type = 'HashingVectorizer'
+        container.add_node(op_type, tokenized, output_tf,
+                           op_domain='com.microsoft', **attrs)
 
     if container.proto_dtype == onnx_proto.TensorProto.DOUBLE:
         apply_cast(scope, output_tf, output,
