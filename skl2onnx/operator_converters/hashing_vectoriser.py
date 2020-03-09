@@ -208,8 +208,8 @@ def convert_sklearn_hashing_vectorizer(scope, operator, container):
     # Create the node.
 
     # Set default and max n_features=5000
-    if op.n_features is None or op.n_features > 5000:
-        op.n_features = 5000
+    if op.n_features is None:
+        op.n_features = 1048576
 
     attrs = {'name': scope.get_unique_operator_name("HashingVectorizer")}
     attrs.update({
