@@ -18,7 +18,7 @@ def calculate_sklearn_hashing_vectorizer_output_shapes(operator):
     check_input_and_output_numbers(operator, input_count_range=1,
                                    output_count_range=1)
 
-    C = operator.raw_operator.n_features + 1
+    C = operator.raw_operator.n_features
     operator.outputs[0].type.shape = [None, C]
 
 
